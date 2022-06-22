@@ -47,7 +47,7 @@ class BuscaLargura:
         for filho in no.filhos(self.problema):
             print("2")
             print(filho)
-            if (not filho.estado in self.fronteira):
+            if (not filho in self.fronteira):
                 print(3)
                 if not self.visitado(filho.estado):
                     self.fronteira.append(filho)

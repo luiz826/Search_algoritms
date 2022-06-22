@@ -1,5 +1,6 @@
 from bfs import *
 from dfs import *
+from romenia import *
 
 no_arad = No('Arad', 0, None, None);
 

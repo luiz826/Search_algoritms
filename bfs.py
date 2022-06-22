@@ -41,16 +41,21 @@ class BuscaLargura:
             self.solucao = no.constroiSolucao()
             self.situacao = BUSCA_SUCESSO
             return
-        
-
+        print(self.fronteira)
+        print("1")
+        print(no.filhos(self.problema))
         for filho in no.filhos(self.problema):
-            if ((not self.fronteira.includes(filho)) and (not self.visitado(filho.estado))):
-                self.fronteira.append(filho)
-                self.visitados.append(filho.estado)
+            print("2")
+            print(filho)
+            if (not filho.estado in self.fronteira):
+                print(3)
+                if not self.visitado(filho.estado):
+                    self.fronteira.append(filho)
+                    self.visitados.append(filho.estado)
             
 
     def visitado(self, estado):
-        return self.visitados.find(estado)
+        return self.visitados in estado
     
 
     def mostraSolucao(self):

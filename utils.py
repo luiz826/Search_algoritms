@@ -124,17 +124,18 @@ class No:
         return f"({self.estado}, {self.custo})"
 
     def filhos(self, problema):
-        estado_acoes = list(map(lambda ea: ea if self.estado == ea["estado"] else None), problema.espacoEstados)
-        print(estado_acoes)
+        estado_acoes = list(map(lambda ea: ea if self.estado == ea["estado"] else None, problema.espacoEstados))
+        
+        estado_acoes = list(filter(None, estado_acoes))
         if (not estado_acoes):
             return []
 
         resultado = []
-        for acao in estado_acoes["acoes"]:
+        for acao in estado_acoes[0]["acoes"]:
             novoNo = No(acao["destino"], self.custo + acao["custo"], self,
                                 acao["destino"])
             resultado.append(novoNo)
-        
+
 
         return resultado
     

@@ -4,10 +4,6 @@ BUSCA_EM_CURSO = 1
 BUSCA_FALHA = 2
 BUSCA_SUCESSO = 3
 
-# funcao auxiliar criada para ajudar a especificar "acoes"
-def acao(destino, custo):
-    return {"destino": destino, 
-            "custo": custo}
 class No:
     def __init__(self, estado, custo, pai, acao):
         self.estado = estado

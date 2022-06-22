@@ -13,7 +13,6 @@ class BuscaLargura:
         while ((self.situacao != BUSCA_FALHA) and (self.situacao != BUSCA_SUCESSO)):
             self.passoBusca()
         
-
         if (self.situacao == BUSCA_FALHA):
             print("Busca falhou")
         else:
@@ -41,27 +40,21 @@ class BuscaLargura:
             self.solucao = no.constroiSolucao()
             self.situacao = BUSCA_SUCESSO
             return
-        print(self.fronteira)
-        print("1")
-        print(no.filhos(self.problema))
+
         for filho in no.filhos(self.problema):
-            print("2")
-            print(filho)
-            if (not filho in self.fronteira):
-                print(3)
-                if not self.visitado(filho.estado):
-                    self.fronteira.append(filho)
-                    self.visitados.append(filho.estado)
-            
+            if (not self.fronteira in filho) and (not self.visitado(filho.estado)):
+                self.fronteira.append(filho)
+                self.visitados.append(filho.estado)
+        
 
     def visitado(self, estado):
-        return self.visitados in estado
+        return estado in self.visitados
     
 
     def mostraSolucao(self):
-        return " -> ".join(str(self.solucao)) +  "Custo:" + str(self.solucao[self.solucao.length - 1].custo)
+        return str(self.solucao) +  "\nCusto:" + str(self.solucao[len(self.solucao) - 1].custo)
     
 
     def mostraFronteira(self):
-        return '[' + " ".join(str(self.fronteira)) + ']'
+        return '[' + str(self.fronteira) + ']'
     

@@ -120,6 +120,9 @@ class No:
         self.pai = pai
         self.acao = acao
 
+    def __iter__(self):
+        return iter(f"({self.estado}, {self.custo})")
+
     def __repr__(self) -> str():
         return f"({self.estado}, {self.custo})"
 
@@ -154,4 +157,3 @@ class Problema:
         self.inicial = inicial
         self.objetivo = objetivo
         self.espacoEstados = espacoEstados
-    

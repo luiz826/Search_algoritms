@@ -1,7 +1,7 @@
-from bfs import *
-from dfs import *
-from romenia import *
-from aspirador import *
+from algorithms.bfs import *
+from algorithms.dfs import *
+from problems.romenia import *
+from problems.aspirador import *
 
 # PROBLEMA ASPIRADOR R3
 no_inicial = No([0,0,0], 1, None, None)

@@ -27,4 +27,10 @@ class Search:
         return state in self.visited
 
     def show_solution(self):
-        return str(self.solution) + "\nCost:" + str(self.solution[len(self.solution) - 1].cost)
+        s = ''
+        for i in self.solution:
+            s += i.state + " -> "
+        return s[:-4] + "\nCost: " + str(self.solution[len(self.solution) - 1].cost)
+
+    def show_frontier(self):
+        return '[' + str(self.frontier) + ']'

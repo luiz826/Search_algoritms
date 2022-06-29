@@ -23,6 +23,8 @@ class A_star(Search):
 
         print('Actual node: State ' + str(node.state) + ' - Cost: ' + str(node.cost) +\
               ' - Cost+Heuristic: ' + str(node.heuristic+node.cost))
+
+
         if (self.problem.objective(node)):
             self.solution = node.build_solution()
             self.situation = SUCCESS_SEARCH

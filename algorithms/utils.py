@@ -10,17 +10,20 @@ class Node:
         return iter(f"({self.state}, {self.cost})")
 
     def __repr__(self) -> str():
+        if self.heuristic != None:
+            return f"({self.state}, {self.cost}, {self.heuristic}, {self.cost + self.heuristic})"
         return f"({self.state}, {self.cost})"
 
     def children(self, problem):
-        state_space = list(map(lambda sa: sa if self.state == sa["state"] else None, problem.state_space))
+        for state_space in problem.state_space:
+            if self.state.strip() == state_space["state"].strip():
+                break
         
-        state_space = list(filter(None, state_space))
         if (not state_space):
             return []
 
         result = []
-        for action in state_space[0]["actions"]:
+        for action in state_space["actions"]:
             newNode = Node(action["destiny"], self.cost + action["cost"], self,
                                 action["destiny"], action["heuristic"])
             result.append(newNode)

@@ -3,46 +3,91 @@ from algorithms.dfs import *
 from algorithms.astar import *
 from problems.romenia import *
 from problems.aspirador import *
+from sys import argv
 
-#Vacuum Cleaner problem R^3
-initial_node = Node([0,0,0], 1, None, None, 1)
-vacuum_cleaner_problem = Problem(initial_node, (lambda no: no if no.state == [1,1,1] else None), vacuum_states)
-print("\nVacuum Cleaner problem R^3\n")
-bl = Breadth_first(vacuum_cleaner_problem)
-bp = Depth_first(vacuum_cleaner_problem)
-ba = A_star(vacuum_cleaner_problem)
-print("\nBreadth-first search\n")
-bl.search()
-print("\nDepth-first Search\n")
-bp.search()
-print("\nA* search\n")
-ba.search()
+'''
+    Grupo:
+        Caio Lucas da Silva Chacon
+        Guilherme Iram Silva Araújo
+        Luiz Fernando Costa dos Santos
+'''
 
-#Vacuum Cleaner problem R^4
-initial_node = Node([0,0,0,0], 1, None, None, 1)
-vacuum_cleaner_problem = Problem(initial_node, (lambda no: no if no.state == [1,1,1,1] else None), vacuum_states2)
-print("\nVacuum Cleaner problem R^4\n")
-bl = Breadth_first(vacuum_cleaner_problem)
-bp = Depth_first(vacuum_cleaner_problem)
-ba = A_star(vacuum_cleaner_problem)
-print("\nBreadth-first search\n")
-bl.search()
-print("\nDepth-first Search\n")
-bp.search()
-print("\nA* search\n")
-ba.search()
+if len(argv) == 1:
+    argv.append("Arad")
 
-#Romania route problem 
-arad_node = Node('Arad', 0, None, None, 366);
-romania_problem = Problem(arad_node, (lambda no: no if no.state == 'Bucharest' else None), romania_states)
-print("\nRomania route problem \n")
-bl = Breadth_first(romania_problem)
-bp = Depth_first(romania_problem)
+print(f"\nRomania route problem - {argv[1].strip().title()}")
+
+initial_node = Node(argv[1].strip().title(), 0, None, None, euclidean_heuristic_dict[argv[1].strip().title()]);
+romania_problem = Problem(initial_node, (lambda no: no if no.state == 'Bucharest' else None), romania_states)
 ba = A_star(romania_problem)
-print("\nBreadth-first search\n")
-bl.search()
-print("\nDepth-first Search\n")
-bp.search()
-print("\nA* search\n")
-ba.search()
+
+if argv[1] == "Arad":
+    print("\nA* search - step by step\n")
+    ba.search_step()
+    print(ba.show_frontier(), "\n")
+    ba.search_step()
+    print(ba.show_frontier(), "\n")
+    ba.search_step()
+    print(ba.show_frontier(), "\n")
+    ba.search_step()
+    print(ba.show_frontier(), "\n")
+    ba.search_step()
+    print(ba.show_frontier(), "\n")
+    ba.search_step()
+    print(ba.show_frontier(), "\n")
+    ba.search_step()
+    print("-"*150)
+    print("\nA* search - solution\n")
+    ba.search()
+
+elif argv[1] == "Lugoj":
+    print("\nA* search - step by step\n")
+    ba.search_step()
+    print(ba.show_frontier(), "\n")
+    ba.search_step()
+    print(ba.show_frontier(), "\n")
+    ba.search_step()
+    print(ba.show_frontier(), "\n")
+    ba.search_step()
+    print(ba.show_frontier(), "\n")
+    ba.search_step()
+    print(ba.show_frontier(), "\n")
+    ba.search_step()
+    print(ba.show_frontier(), "\n")
+    ba.search_step()
+    print(ba.show_frontier(), "\n")
+    ba.search_step()
+    print(ba.show_frontier(), "\n")
+    ba.search_step()
+    print(ba.show_frontier(), "\n")
+    ba.search_step()
+    print(ba.show_frontier(), "\n")
+    ba.search_step()
+    print(ba.show_frontier(), "\n")
+    ba.search_step()
+    print("-"*150)
+    print("\nA* search\n")
+    ba.search()
+
+elif argv[1] == "Neamt":
+    ba.search_step()
+    print(ba.show_frontier(), "\n")
+    ba.search_step()
+    print(ba.show_frontier(), "\n")
+    ba.search_step()
+    print(ba.show_frontier(), "\n")
+    ba.search_step()
+    print(ba.show_frontier(), "\n")
+    ba.search_step()
+    print(ba.show_frontier(), "\n")
+    ba.search_step()
+    print("-"*150)
+    print("\nA* search\n")
+    ba.search()
+else:
+    print("\nA* search\n")
+    ba.search()
+
+
+
 

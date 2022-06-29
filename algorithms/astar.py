@@ -1,10 +1,11 @@
+from algorithms.utils import *
 from algorithms.search import *
 
-class Depth_first(Search):
+class A_star(Search):
     def __init__(self, problem):
         super().__init__(problem)
-        self.frontier = [problem.initial]
-        
+        self.frontier =  PriorityQueue(problem.initial)
+                
     def search_step(self):
         if (self.situation == FAIL_SEARCH):
             print("Fail Search")
@@ -14,21 +15,19 @@ class Depth_first(Search):
             print("Search find a solution")
             return
 
-        node = self.frontier.pop(-1)
+        node = self.frontier.pop_()
 
         if (not node):
             self.situation = FAIL_SEARCH
             return
 
-        print('Actual node: State ' + str(node.state) + ' - Cost: ' + str(node.cost))
-
+        print('Actual node: State ' + str(node.state) + ' - Cost: ' + str(node.cost) +\
+              ' - Cost+Heuristic: ' + str(node.heuristic+node.cost))
         if (self.problem.objective(node)):
             self.solution = node.build_solution()
             self.situation = SUCCESS_SEARCH
             return
 
         for child in node.children(self.problem):
-            if (not self.frontier in child) and (not self.is_visited(child.state)):
-                self.frontier.append(child)
-                self.visited.append(child.state)
-        
+            if (not self.frontier in child):
+                self.frontier.insert(child)        

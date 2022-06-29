@@ -1,99 +1,96 @@
-def acao(destino, custo):
-    return {"destino": destino, 
-            "custo": custo}   
+from problems.utils import action
 
-estadosAspirador = [
+vacuum_states = [
     { 
-        "estado": [0, 0, 0],
-        "acoes": [acao([1, 0, 0], 1), acao([0, 1, 0], 1), acao([0, 0, 1], 1)]
+        "state": [0, 0, 0],
+        "actions": [action([1, 0, 0], 1, 1), action([0, 1, 0], 1, 1), action([0, 0, 1], 1, 1)]
     },
     { 
-        "estado": [1, 0, 0],
-        "acoes": [acao([1, 1, 0], 1), acao([1, 0, 1], 1)]
+        "state": [1, 0, 0],
+        "actions": [action([1, 1, 0], 1, 1), action([1, 0, 1], 1, 1)]
     },
     { 
-        "estado": [0, 1, 0],
-        "acoes": [acao([1, 1, 0], 1), acao([0, 1, 1], 1)]
+        "state": [0, 1, 0],
+        "actions": [action([1, 1, 0], 1, 1), action([0, 1, 1], 1, 1)]
     },
     { 
-        "estado": [0, 0, 1],
-        "acoes": [acao([1, 0, 1], 1), acao([0, 1, 1], 1)]
+        "state": [0, 0, 1],
+        "actions": [action([1, 0, 1], 1, 1), action([0, 1, 1], 1, 1)]
     },
     { 
-        "estado": [1, 1, 0],
-        "acoes": [acao([1, 1, 1], 1)]
+        "state": [1, 1, 0],
+        "actions": [action([1, 1, 1], 1, 1)]
     },
     { 
-        "estado": [1, 0, 1],
-        "acoes": [acao([1, 1, 1], 1)]
+        "state": [1, 0, 1],
+        "actions": [action([1, 1, 1], 1, 1)]
     },
     { 
-        "estado": [0, 1, 1],
-        "acoes": [acao([1, 1, 1], 1)]
+        "state": [0, 1, 1],
+        "actions": [action([1, 1, 1], 1, 1)]
     }
 ]
 
-estadosAspirador2 = [
+vacuum_states2 = [
     { 
-        "estado": [0, 0, 0, 0],
-        "acoes": [acao([1, 0, 0, 0], 1), acao([0, 1, 0, 0], 1), 
-                  acao([0, 0, 1, 0], 1), acao([0, 0, 0, 1], 1)]
+        "state": [0, 0, 0, 0],
+        "actions": [action([1, 0, 0, 0], 1, 1), action([0, 1, 0, 0], 1, 1), 
+                  action([0, 0, 1, 0], 1, 1), action([0, 0, 0, 1], 1, 1)]
     },
     { 
-        "estado": [1, 0, 0, 0],
-        "acoes": [acao([1, 1, 0, 0], 1), acao([1, 0, 1, 0], 1), acao([1, 0, 0, 1], 1)]
+        "state": [1, 0, 0, 0],
+        "actions": [action([1, 1, 0, 0], 1, 1), action([1, 0, 1, 0], 1, 1), action([1, 0, 0, 1], 1, 1)]
     },
     { 
-        "estado": [0, 1, 0, 0],
-        "acoes": [acao([1, 1, 0, 0], 1), acao([0, 1, 1, 0], 1), acao([0, 1, 0, 1], 1)]
+        "state": [0, 1, 0, 0],
+        "actions": [action([1, 1, 0, 0], 1, 1), action([0, 1, 1, 0], 1, 1), action([0, 1, 0, 1], 1, 1)]
     },
     { 
-        "estado": [0, 0, 1, 0],
-        "acoes": [acao([1, 0, 1, 0], 1), acao([0, 1, 1, 0], 1), acao([0, 0, 1, 1], 1)]
+        "state": [0, 0, 1, 0],
+        "actions": [action([1, 0, 1, 0], 1, 1), action([0, 1, 1, 0], 1, 1), action([0, 0, 1, 1], 1, 1)]
     },
     { 
-        "estado": [0, 0, 0, 1],
-        "acoes": [acao([1, 0, 0, 1], 1), acao([0, 1, 0, 1], 1), acao([0, 0, 1, 1], 1)]
+        "state": [0, 0, 0, 1],
+        "actions": [action([1, 0, 0, 1], 1, 1), action([0, 1, 0, 1], 1, 1), action([0, 0, 1, 1], 1, 1)]
     },
     { 
-        "estado": [1, 1, 0, 0],
-        "acoes": [acao([1, 1, 1, 0], 1), acao([1, 1, 0, 1], 1)]
+        "state": [1, 1, 0, 0],
+        "actions": [action([1, 1, 1, 0], 1, 1), action([1, 1, 0, 1], 1, 1)]
     },
     { 
-        "estado": [1, 0, 1, 0],
-        "acoes": [acao([1, 1, 1, 0], 1), acao([1, 0, 1, 1], 1)]
+        "state": [1, 0, 1, 0],
+        "actions": [action([1, 1, 1, 0], 1, 1), action([1, 0, 1, 1], 1, 1)]
     },
     { 
-        "estado": [1, 0, 0, 1],
-        "acoes": [acao([1, 1, 0, 1], 1), acao([1, 0, 1, 1], 1)]
+        "state": [1, 0, 0, 1],
+        "actions": [action([1, 1, 0, 1], 1, 1), action([1, 0, 1, 1], 1, 1)]
     },
     { 
-        "estado": [0, 1, 1, 0],
-        "acoes": [acao([1, 1, 1, 0], 1), acao([0, 1, 1, 1], 1)]
+        "state": [0, 1, 1, 0],
+        "actions": [action([1, 1, 1, 0], 1, 1), action([0, 1, 1, 1], 1, 1)]
     },
     { 
-        "estado": [0, 1, 0, 1],
-        "acoes": [acao([1, 1, 0, 1], 1), acao([0, 1, 1, 1], 1)]
+        "state": [0, 1, 0, 1],
+        "actions": [action([1, 1, 0, 1], 1, 1), action([0, 1, 1, 1], 1, 1)]
     },
     { 
-        "estado": [0, 0, 1, 1],
-        "acoes": [acao([1, 0, 1, 1], 1), acao([0, 1, 1, 1], 1)]
+        "state": [0, 0, 1, 1],
+        "actions": [action([1, 0, 1, 1], 1, 1), action([0, 1, 1, 1], 1, 1)]
     },
     {
-        "estado": [0, 1, 1, 1],
-        "acoes": [acao([1, 1, 1, 1], 1)]
+        "state": [0, 1, 1, 1],
+        "actions": [action([1, 1, 1, 1], 1, 1)]
     },
     {
-        "estado": [1, 0, 1, 1],
-        "acoes": [acao([1, 1, 1, 1], 1)]
+        "state": [1, 0, 1, 1],
+        "actions": [action([1, 1, 1, 1], 1, 1)]
     },
     {
-        "estado": [1, 1, 0, 1],
-        "acoes": [acao([1, 1, 1, 1], 1)]
+        "state": [1, 1, 0, 1],
+        "actions": [action([1, 1, 1, 1], 1, 1)]
     },
     {
-        "estado": [1, 1, 1, 0],
-        "acoes": [acao([1, 1, 1, 1], 1)]
+        "state": [1, 1, 1, 0],
+        "actions": [action([1, 1, 1, 1], 1, 1)]
     }
 ]
-

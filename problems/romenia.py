@@ -1,107 +1,106 @@
-def acao(destino, custo):
-    return {"destino": destino, 
-            "custo": custo}    
+from problems.utils import action
 
-estadosRomenia = [
+romania_states = [
     {
-        "estado": 'Arad',
-        "acoes": [ acao('Zerind', 75), acao('Sibiu', 140), acao('Timisoara', 118) ]
+        "state": 'Arad',
+        "actions": [ action('Zerind', 75, 374), action('Sibiu', 140, 253), action('Timisoara', 118, 329) ]
     },
 
     {
-        "estado": 'Zerind',
-        "acoes": [ acao('Arad', 75), acao('Oradea', 71) ]
+        "state": 'Zerind',
+        "actions": [ action('Arad', 75, 366), action('Oradea', 71, 380) ]
     },
 
     {
-        "estado": 'Timisoara',
-        "acoes": [ acao('Arad', 118), acao('Lugoj', 111) ]
+        "state": 'Timisoara',
+        "actions": [ action('Arad', 117, 366), action('Lugoj', 111, 244) ]
     },
 
     {
-        "estado": 'Sibiu',
-        "acoes": [ acao('Arad', 140), acao('Oradea', 151), acao('Fagaras', 99),
-                 acao('Rimnicu Vilcea', 80)]
+        "state": 'Sibiu',
+        "actions": [ action('Arad', 140, 366), action('Oradea', 151, 380), action('Fagaras', 99, 176),
+                 action('Rimnicu Vilcea', 80, 193)]
     },
 
     {
-        "estado": 'Oradea',
-        "acoes": [ acao('Zerind', 71), acao('Sibiu', 151) ]
+        "state": 'Oradea',
+        "actions": [ action('Zerind', 71, 374), action('Sibiu', 151, 253) ]
     },
 
     {
-        "estado": 'Lugoj',
-        "acoes": [ acao('Timisoara', 111), acao('Mehadia', 70) ]
+        "state": 'Lugoj',
+        "actions": [ action('Timisoara', 111, 329), action('Mehadia', 70, 241) ]
     },
 
     {
-        "estado": 'Mehadia',
-        "acoes": [ acao('Lugoj', 70), acao('Drobeta', 75) ]
+        "state": 'Mehadia',
+        "actions": [ action('Lugoj', 70, 244), action('Drobeta', 75, 242) ]
     },
 
     {
-        "estado": 'Drobeta',
-        "acoes": [ acao('Mehadia', 75), acao('Craiova', 120) ]
+        "state": 'Drobeta',
+        "actions": [ action('Mehadia', 75, 241), action('Craiova', 120, 160) ]
     },
 
     {
-        "estado": 'Craiova',
-        "acoes": [ acao('Drobeta', 120), acao('Rimnicu Vilcea', 146), acao('Pitesti', 138) ]
+        "state": 'Craiova',
+        "actions": [ action('Drobeta', 120, 242), action('Rimnicu Vilcea', 146, 193), action('Pitesti', 138, 100) ]
     },
 
     {
-        "estado": 'Rimnicu Vilcea',
-        "acoes": [ acao('Sibiu', 80), acao('Craiova', 146), acao('Pitesti', 97) ]
+        "state": 'Rimnicu Vilcea',
+        "actions": [ action('Sibiu', 80, 253), action('Craiova', 146, 160), action('Pitesti', 97, 100) ]
     },
 
     {
-        "estado": 'Fagaras',
-        "acoes": [ acao('Sibiu', 99), acao('Bucharest', 211) ]
+        "state": 'Fagaras',
+        "actions": [ action('Sibiu', 99, 253), action('Bucharest', 211, 0) ]
     },
 
     {
-        "estado": 'Pitesti',
-        "acoes": [ acao('Rimnicu Vilcea', 97), acao('Craiova', 138), acao('Bucharest', 101) ]
+        "state": 'Pitesti',
+        "actions": [ action('Rimnicu Vilcea', 97, 193), action('Craiova', 138, 160), action('Bucharest', 101, 0) ]
     },
 
     {
-        "estado": 'Giurgiu',
-        "acoes": [ acao('Bucharest', 90) ]
+        "state": 'Giurgiu',
+        "actions": [ action('Bucharest', 90, 0) ]
     },
 
     {
-        "estado": 'Bucharest',
-        "acoes": [ acao('Fagaras', 211), acao('Pitesti', 101), acao('Giurgiu', 90),
-                 acao('Urziceni', 85) ]
+        "state": 'Bucharest',
+        "actions": [ action('Fagaras', 211, 176), action('Pitesti', 101, 100), action('Giurgiu', 90, 77),
+                 action('Urziceni', 85, 80) ]
     },
 
     {
-        "estado": 'Urziceni',
-        "acoes": [ acao('Bucharest', 85), acao('Vaslui', 142), acao('Hirsova', 98) ]
+        "state": 'Urziceni',
+        "actions": [ action('Bucharest', 85, 0), action('Vaslui', 142, 199), action('Hirsova', 98, 151) ]
     },
 
     {
-        "estado": 'Hirsova',
-        "acoes": [ acao('Urziceni', 98), acao('Eforie', 86) ]
+        "state": 'Hirsova',
+        "actions": [ action('Urziceni', 98, 80), action('Eforie', 86, 161) ]
     },
 
     {
-        "estado": 'Eforie',
-        "acoes": [ acao('Hirsova', 86) ]
+        "state": 'Eforie',
+        "actions": [ action('Hirsova', 86, 151) ]
     },
 
     {
-        "estado": 'Vaslui',
-        "acoes": [ acao('Urziceni', 142), acao('Iasi', 92) ]
+        "state": 'Vaslui',
+        "actions": [ action('Urziceni', 142, 80), action('Iasi', 92, 226) ]
     },
 
     {
-        "estado": 'Iasi',
-        "acoes": [ acao('Vaslui', 92), acao('Neamt', 87) ]
+        "state": 'Iasi',
+        "actions": [ action('Vaslui', 92, 199), action('Neamt', 87, 234) ]
     },
 
     {
-        "estado": 'Neamt',
-        "acoes": [ acao('Iasi', 87) ]
+        "state": 'Neamt',
+        "actions": [ action('Iasi', 87, 226) ]
     }
 ]
+

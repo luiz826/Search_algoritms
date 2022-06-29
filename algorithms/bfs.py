@@ -1,60 +1,33 @@
-from utils import *
+from algorithms.search import *
 
-class BuscaLargura:
-    def __init__(self, problema):
-        self.problema = problema
-        self.fronteira = [problema.inicial]
-        self.visitados = [problema.inicial.estado]
-        self.situacao = BUSCA_INICIANDO
-        self.solucao = []
-    
-
-    def efetuarBusca(self):
-        while ((self.situacao != BUSCA_FALHA) and (self.situacao != BUSCA_SUCESSO)):
-            self.passoBusca()
+class Breadth_first(Search):
+    def __init__(self, problem):
+        super().__init__(problem)
+        self.frontier = [problem.initial]
         
-        if (self.situacao == BUSCA_FALHA):
-            print("Busca falhou")
-        else:
-            print("Solucao encontrada: ")
-            print(self.mostraSolucao())
-        
-    def passoBusca(self):
-        if (self.situacao == BUSCA_FALHA):
-            print("Busca falhou")
+    def search_step(self):
+        if (self.situation == FAIL_SEARCH):
+            print("Fail Search")
             return
 
-        if (self.situacao == BUSCA_SUCESSO):
-            print("Busca encontrou a solucao")
+        if (self.situation == SUCCESS_SEARCH):
+            print("Search find a solution")
             return
 
-        no = self.fronteira.pop(0)
+        node = self.frontier.pop(0)
 
-        if (not no):
-            self.situacao = BUSCA_FALHA
+        if (not node):
+            self.situation = FAIL_SEARCH
             return
 
-        print('no atual: estado ' + str(no.estado) + ' - custo: ' + str(no.custo))
+        print('Actual node: State ' + str(node.state) + ' - Cost: ' + str(node.cost))
 
-        if (self.problema.objetivo(no)):
-            self.solucao = no.constroiSolucao()
-            self.situacao = BUSCA_SUCESSO
+        if (self.problem.objective(node)):
+            self.solution = node.build_solution()
+            self.situation = SUCCESS_SEARCH
             return
 
-        for filho in no.filhos(self.problema):
-            if (not self.fronteira in filho) and (not self.visitado(filho.estado)):
-                self.fronteira.append(filho)
-                self.visitados.append(filho.estado)
-        
-
-    def visitado(self, estado):
-        return estado in self.visitados
-    
-
-    def mostraSolucao(self):
-        return str(self.solucao) +  "\nCusto:" + str(self.solucao[len(self.solucao) - 1].custo)
-    
-
-    def mostraFronteira(self):
-        return '[' + str(self.fronteira) + ']'
-    
+        for child in node.children(self.problem):
+            if (not self.frontier in child) and (not self.is_visited(child.state)):
+                self.frontier.append(child)
+                self.visited.append(child.state)
